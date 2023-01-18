@@ -24,7 +24,10 @@ As I mention yesterday, instead of clustering the dense representation, we have 
 ![embed 1](./viz/ca.png)
 
 But the loss is peculiar. It is to good to be true...
-![to good to be true](./viz/plot%20embed.png)
+
+<p align="center">
+  <img src="./viz/plot%20embed.png">
+</p>
 
 I don't really know what's wrong but I suspect something: My encoder embedding layer is not learning any semantic similiarity. Why? It's because the decoder is trying to produce a weight that will end up the same with the input embedding, so the input embedding is not updating that much. What I learn from this? don't calculate the loss of a dynamic (trainable or in progress of training) true value.
 
@@ -35,16 +38,23 @@ I think I can fix this by not calculating the loss of dynamic true value. I will
 > 18 Jan 2023 #2
 
 I think it's all good. But the loss is so low, I don't know why. Maybe it's because how the embedding vector created.
+<p align="center">
+  <img src="./viz/plot%20pretrained%20embed.png">
+</p>
 
-![plot pretrained embed](./viz/plot%20pretrained%20embed.png)
-
-I don't if this is good or not. I'm will do a research about dimensionallity reduction evaluation method.
+I don't know if this is good or not. I'm will do a research about dimensionallity reduction evaluation method.
 
 The cluster results looks cool but not balance. I think it is not really that important if it's balance or not because we calculate by the distance.
-![3d cluster](./viz/output%20pretrained%20embed.png)
+
+<p align="center">
+  <img height=500px src="./viz/output%20pretrained%20embed.png">
+</p>
 
 This imbalance reflect on the low silhouette score which is only about 0.33787456.
-![silhoutte pretrained embed](./viz/silhoutte%20pretrained%20embed.png)
+
+<p align="center">
+  <img src="./viz/silhoutte%20pretrained%20embed.png">
+</p>
 
 The significant difference between cluster reflect the imbalanceness of the cluster label. To be fair, all of the cluster is passing the red line which is good.
 
